@@ -17,7 +17,7 @@ void action_produire(char* chain_string){
     printf("Message : %d", count);
 }
 
-void action_commencer(char* chain_string){
+void action_consommer(char* chain_string){
     char *chain = chain_string;
     chain_string += toupper(*chain);
     printf("\n");
@@ -36,7 +36,7 @@ void action_retirer(char* chain_string) {
 void *consommateur(){
     for (int value = 0; value < 20; value++){
             sem_wait(&cons);
-            action_commencer(chain_string);
+            action_consommer(chain_string);
             action_retirer(chain_string);
             sem_post(&prod);
     }
